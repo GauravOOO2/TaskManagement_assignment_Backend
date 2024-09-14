@@ -31,16 +31,20 @@ exports.getTaskById = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
   try {
-    const task = await Task.findById(req.params.id);
-    if (!task) return res.status(404).json({ message: 'Task not found' });
+    const { id } = req.params;
+    const { title, description, completed, dueDate, category } = req.body;
     
-    if (req.body.completed && task.completed) {
-      return res.status(400).json({ message: 'Task is already completed' });
+    const updatedTask = await Task.findByIdAndUpdate(
+      id,
+      { title, description, completed, dueDate, category },
+      { new: true }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({ message: 'Task not found' });
     }
-    
-    Object.assign(task, req.body);
-    await task.save();
-    res.json(task);
+
+    res.json(updatedTask);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
