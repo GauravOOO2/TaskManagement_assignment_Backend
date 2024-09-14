@@ -3,23 +3,19 @@ const express = require('express');
 const connectDB = require('./config/database');
 const taskRoutes = require('./routes/taskRoutes');
 const errorHandler = require('./middleware/errorHandler');
-const cors = require('cors');
-
+const cors = require('cors');  
 const app = express();
-
-// Enable CORS for all routes
-app.use(cors());
 
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use(express.json());
 
-// Routes
+app.use(express.json());
+app.use(cors());  
+
+
 app.use('/api/tasks', taskRoutes);
 
-// Error handling middleware
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

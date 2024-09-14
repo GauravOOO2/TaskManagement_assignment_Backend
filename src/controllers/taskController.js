@@ -2,6 +2,22 @@ const Task = require('../models/Task');
 
 exports.createTask = async (req, res) => {
   try {
+    const { title, description, dueDate } = req.body;
+    
+    if (!title || !description) {
+      return res.status(400).json({ message: 'Both title and description are required.' });
+    }
+
+    if (dueDate) {
+      const currentDate = new Date();
+      currentDate.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+      const taskDueDate = new Date(dueDate);
+      
+      if (taskDueDate < currentDate) {
+        return res.status(400).json({ message: 'Due date cannot be in the past.' });
+      }
+    }
+
     const task = new Task(req.body);
     await task.save();
     res.status(201).json(task);
@@ -34,6 +50,20 @@ exports.updateTask = async (req, res) => {
     const { id } = req.params;
     const { title, description, completed, dueDate, category } = req.body;
     
+    if (!title || !description) {
+      return res.status(400).json({ message: 'Both title and description are required.' });
+    }
+
+    if (dueDate) {
+      const currentDate = new Date();
+      currentDate.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+      const taskDueDate = new Date(dueDate);
+      
+      if (taskDueDate < currentDate) {
+        return res.status(400).json({ message: 'Due date cannot be in the past.' });
+      }
+    }
+
     const updatedTask = await Task.findByIdAndUpdate(
       id,
       { title, description, completed, dueDate, category },
