@@ -33,15 +33,13 @@ This Task Management Application is a full-stack web application designed to hel
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/task-management-app.git
+   git clone https://github.com/GauravOOO2/TaskManagement_assignment_Backend.git
    cd task-management-app
    ```
 
 2. Install dependencies for both frontend and backend:
    ```bash
-   cd frontend
-   npm install
-   cd ../backend
+   cd ../TaskManagement_assignment_Backend
    npm install
    ```
 
@@ -51,11 +49,7 @@ This Task Management Application is a full-stack web application designed to hel
      MONGO_URL=your_mongodb_connection_string
      PORT=5000
      ```
-   - In the `frontend` directory, create a `.env.local` file with:
-     ```bash
-     NEXT_PUBLIC_API_URL=http://localhost:5000/api
-     ```
-
+     
 ### Running the Application Locally
 
 1. Start the backend server:
