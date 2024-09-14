@@ -4,6 +4,10 @@
 
 This Task Management Application is a full-stack web application designed to help users organize and track their tasks efficiently. It provides a user-friendly interface for creating, updating, and deleting tasks, as well as marking them as complete.
 
+## Live Link
+
+[Live Deployment Link](https://task-management-assignment-frontend.vercel.app/)
+
 ## Features
 
 - Create new tasks with title, description, due date, and category
@@ -34,12 +38,11 @@ This Task Management Application is a full-stack web application designed to hel
 1. Clone the repository:
    ```bash
    git clone https://github.com/GauravOOO2/TaskManagement_assignment_Backend.git
-   cd task-management-app
    ```
 
 2. Install dependencies for both frontend and backend:
    ```bash
-   cd ../TaskManagement_assignment_Backend
+   cd ./TaskManagement_assignment_Backend
    npm install
    ```
 
